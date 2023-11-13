@@ -1,0 +1,8 @@
+<app-spinner *ngIf="commonService.isLoading$ | async"></app-spinner>
+<app-header></app-header>
+<main class="main">
+  <app-nav></app-nav>
+  <div style="flex-grow: 1;">
+    <router-outlet></router-outlet>
+  </div>
+</main>

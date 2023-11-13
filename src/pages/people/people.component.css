@@ -1,0 +1,14 @@
+.main-container {
+  background: url(/assets/star-wars-darth-vader-chromebook.jpg) no-repeat;
+  background-size: 100%;
+  height: calc(100vh - 92px);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main-container h3 {
+  font-size: 30px;
+  color: #8d95c1;
+}
