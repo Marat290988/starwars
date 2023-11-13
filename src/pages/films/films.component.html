@@ -1,5 +1,17 @@
 <div class="container">
-  <div *ngFor="let item of films$ | async">
-    {{ item.title }}
+  <div *ngFor="let item of films$ | async" class="card card-item">
+    <h3 class="highlighted card-title">{{ item.title }}</h3>
+    <p>
+      <span class="highlighted">Release date:</span> {{ item.release_date | date }}
+    </p>
+    <p>
+      <span class="highlighted">Director:</span> {{ item.director }}
+    </p>
+    <p>
+      <span class="highlighted">Producer:</span> {{ item.producer }}
+    </p>
+    <p>
+      <span class="highlighted">Description:</span> {{ item.opening_crawl }}
+    </p>
   </div>
 </div>

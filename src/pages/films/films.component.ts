@@ -1,11 +1,7 @@
 import { Component, ChangeDetectionStrategy } from "@angular/core";
-import { CommonService } from "../../services/common.service";
 import { DataService } from "../../services/data.service";
-import { Store } from '@ngrx/store';
 import { Observable } from "rxjs";
 import { Film } from "../../types/film.type";
-import { films } from "../../store/data.action";
-import { initialState } from "../../store/data.reducer";
 
 @Component({
   selector: 'app-films',
@@ -16,23 +12,14 @@ import { initialState } from "../../store/data.reducer";
 export class FilmsComponent {
 
   constructor(
-    private dataService: DataService,
-    private store: Store<typeof initialState>,
+    private dataService: DataService
   ){
-    this.films$ = this.store.select('films');
-    this.dataService.initFetchFilmData();
-
+    this.films$ = this.dataService.initFetchFilmDataAndGetFilmStore();
   }
 
   films$!: Observable<Film[]>;
 
   ngOnInit() {
-
-    this.films$.subscribe(res => {
-      console.log(111)
-    });
-    this.store.dispatch(films([]))
-
   }
 
 }

@@ -8,7 +8,7 @@ import { RouterModule } from "@angular/router";
 import { SpinnerComponent } from "../components/spinner/spinner.component";
 import { CommonModule } from "@angular/common";
 import { StoreModule } from '@ngrx/store';
-import { dataReducer } from "../store/data.reducer";
+import { DATA_FEATURENAME, dataReducer } from "../store/data.reducer";
 
 @NgModule({
   declarations: [
@@ -19,7 +19,8 @@ import { dataReducer } from "../store/data.reducer";
   ],
   imports: [
     BrowserModule,
-    StoreModule.forRoot({ count: dataReducer }),
+    StoreModule.forRoot({}),
+    StoreModule.forFeature(DATA_FEATURENAME, dataReducer),
     HttpClientModule,
     CommonModule,
     RouterModule.forRoot([

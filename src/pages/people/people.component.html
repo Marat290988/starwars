@@ -1,5 +1,11 @@
-<div class="main-container">
-  <h3>
-    PEOPLE
-  </h3>
+<div class="container">
+  <!-- <div *ngFor="let item of collection | paginate: { itemsPerPage: 10, currentPage: p }">
+    {{item}}
+  </div>
+  <div [ngStyle]="{width: '100%', 'text-align': 'center'}">
+    <pagination-controls
+      (pageChange)="p = $event"
+    ></pagination-controls>
+  </div> -->
+  <p-paginator [first]="0" [rows]="10" [totalRecords]="dataPage.page"></p-paginator>
 </div>

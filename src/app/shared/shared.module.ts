@@ -1,12 +1,15 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
+import { PaginatorModule } from 'primeng/paginator';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    PaginatorModule
   ],
    exports: [
-    CommonModule
+    CommonModule,
+    PaginatorModule
    ]
 })
 export class SharedModule {
