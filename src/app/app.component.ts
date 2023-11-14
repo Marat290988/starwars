@@ -1,6 +1,5 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonService } from '../services/common.service';
-import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-root',
@@ -10,12 +9,11 @@ import { DataService } from '../services/data.service';
 export class AppComponent implements OnInit {
 
   constructor(
-    public commonService: CommonService,
-    private changeDetection: ChangeDetectorRef,
-    private dataService: DataService
-  ){
-  }
+    public commonService: CommonService
+  ) {}
+
   ngOnInit(): void {
+
   }
 
 }

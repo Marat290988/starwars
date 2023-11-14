@@ -1,5 +1,28 @@
-<div class="main-container">
-  <h3>
-    planets
-  </h3>
+<div class="container">
+  <div *ngFor="let item of this.planets$ | async" class="card card-item">
+    <h3 class="highlighted card-title">{{ item.name }}</h3>
+    <p>
+      <span class="highlighted">Rotation Period:</span> {{ item.rotation_period }}
+    </p>
+    <p>
+      <span class="highlighted">Orbital Period:</span> {{ item.orbital_period }}
+    </p>
+    <p>
+      <span class="highlighted">Diameter:</span> {{ item.diameter }}
+    </p>
+    <p>
+      <span class="highlighted">Climate:</span> {{ item.climate }}
+    </p>
+    <p>
+      <span class="highlighted">Terrain:</span> {{ item.terrain }}
+    </p>
+    <p>
+      <span class="highlighted">Population:</span> {{ item.population }}
+    </p>
+  </div>
+  <app-pag
+    [page]="page"
+    [dataStoreFunc]="'initFetchPlanetsAndGetPlanetsStore'"
+  >
+  </app-pag>
 </div>

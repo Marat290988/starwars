@@ -17,6 +17,6 @@ a {
   color: var(--fn-color)
 }
 
-a.active {
+li.active a {
   color: #1894eb;
 }

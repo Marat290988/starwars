@@ -1,4 +1,7 @@
 <app-spinner *ngIf="commonService.isLoading$ | async"></app-spinner>
+<div class="error" *ngIf="commonService.isError$ | async">
+  Something went wrong with network. Please reload.
+</div>
 <app-header></app-header>
 <main class="main">
   <app-nav></app-nav>

@@ -1,7 +1,7 @@
-import { NgModule } from "@angular/core";
+import { NgModule, Provider } from "@angular/core";
 import { AppComponent } from "./app.component";
 import { BrowserModule } from "@angular/platform-browser";
-import { HttpClientModule } from "@angular/common/http";
+import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 import { HeaderComponent } from "../components/header/header.component";
 import { NavComponent } from "../components/nav/nav.component";
 import { RouterModule } from "@angular/router";
@@ -9,6 +9,13 @@ import { SpinnerComponent } from "../components/spinner/spinner.component";
 import { CommonModule } from "@angular/common";
 import { StoreModule } from '@ngrx/store';
 import { DATA_FEATURENAME, dataReducer } from "../store/data.reducer";
+import { ReqInterceptor } from "../utils/req.interceptor";
+
+export const INTERCEPTOR_PROVIDER: Provider = {
+  provide: HTTP_INTERCEPTORS,
+  multi: true,
+  useClass: ReqInterceptor
+}
 
 @NgModule({
   declarations: [
@@ -34,6 +41,7 @@ import { DATA_FEATURENAME, dataReducer } from "../store/data.reducer";
       {path: '**', redirectTo: 'main'}
     ])
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  providers: [INTERCEPTOR_PROVIDER]
 })
 export class AppModule {}

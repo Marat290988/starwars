@@ -12,3 +12,23 @@ export const getPeople = createSelector(
   getFeature,
   state => state.people
 )
+
+export const getStarships = createSelector(
+  getFeature,
+  state => state.starships
+)
+
+export const getTransports = createSelector(
+  getFeature,
+  state => state.transports
+)
+
+export const getPlanets = createSelector(
+  getFeature,
+  state => state.planets
+)
+
+export const getSpecies = createSelector(
+  getFeature,
+  state => state.species
+)

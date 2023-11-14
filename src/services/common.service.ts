@@ -5,10 +5,17 @@ import { BehaviorSubject } from "rxjs";
   providedIn: 'root'
 })
 export class CommonService {
-  public isLoadingSource = new BehaviorSubject<boolean>(false);
+  private isLoadingSource = new BehaviorSubject<boolean>(false);
   public isLoading$ = this.isLoadingSource.asObservable();
 
   public makeLoading(state: boolean): void {
     this.isLoadingSource.next(state);
+  }
+
+  private isErrorSource = new BehaviorSubject<boolean>(false);
+  public isError$ = this.isErrorSource.asObservable();
+
+  public makeError(state: boolean): void {
+    this.isErrorSource.next(state);
   }
 }

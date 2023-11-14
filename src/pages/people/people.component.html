@@ -1,11 +1,31 @@
 <div class="container">
-  <!-- <div *ngFor="let item of collection | paginate: { itemsPerPage: 10, currentPage: p }">
-    {{item}}
+  <div *ngFor="let item of this.people$ | async" class="card card-item">
+    <h3 class="highlighted card-title">{{ item.name }}</h3>
+    <p>
+      <span class="highlighted">Gender:</span> {{ item.gender }}
+    </p>
+    <p>
+      <span class="highlighted">Birth Year:</span> {{ item.birth_year }}
+    </p>
+    <p>
+      <span class="highlighted">Mass:</span> {{ item.mass }}
+    </p>
+    <p>
+      <span class="highlighted">Eye color:</span> {{ item.eye_color }}
+    </p>
+    <p>
+      <span class="highlighted">Hair color:</span> {{ item.hair_color }}
+    </p>
+    <p>
+      <span class="highlighted">Skin color:</span> {{ item.skin_color }}
+    </p>
+    <p>
+      <span class="highlighted">Height:</span> {{ item.height }}
+    </p>
   </div>
-  <div [ngStyle]="{width: '100%', 'text-align': 'center'}">
-    <pagination-controls
-      (pageChange)="p = $event"
-    ></pagination-controls>
-  </div> -->
-  <p-paginator [first]="0" [rows]="10" [totalRecords]="dataPage.page"></p-paginator>
+  <app-pag
+    [page]="page"
+    [dataStoreFunc]="'initFetchPeopeAndGetPeopleStore'"
+  >
+  </app-pag>
 </div>

@@ -1,11 +1,12 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <header class="header card">
-      <h2>STAR WARS /// HEADER</h2>
+      <h2>STAR WARS /// {{title}}</h2>
     </header>
   `,
   styles: [`
@@ -20,5 +21,16 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
   `]
 })
 export class HeaderComponent {
+
+  constructor(private router: Router, private cdr: ChangeDetectorRef) {
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.title = document.title;
+        this.cdr.detectChanges();
+    }
+    })
+  }
+
+  title = '';
 
 }

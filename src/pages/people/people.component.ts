@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy, ChangeDetectorRef } from "@angular/core";
 import { DataService } from "../../services/data.service";
-import { Observable } from 'rxjs';
+import { Observable, Subscription, map } from 'rxjs';
 import { People } from "../../types/people.type";
 
 @Component({
@@ -10,29 +10,35 @@ import { People } from "../../types/people.type";
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PeopleComponent {
-  
+
   constructor(
     private dataService: DataService,
     private cdr: ChangeDetectorRef
   ){
     this.people$ = this.dataService.initFetchPeopeAndGetPeopleStore(this.dataPage);
-    const temp = []
-    for (let i = 1; i <= 100; i++) {
-      temp.push(`item ${i}`);
-    }
-    this.collection = temp;
   }
 
   ngOnInit() {
-    this.people$.subscribe(res => {
-      console.log(this.dataPage)
-      this.cdr.detectChanges();
-    })
+    this.subs.push(
+      this.people$.pipe(
+        map(_ => {
+          return this.dataPage.page
+        })
+      ).subscribe(p => {
+        this.page = p;
+        this.cdr.detectChanges();
+      })
+    );
   }
 
-  collection: any[] = [];
+  ngOnDestroy() {
+    this.subs.forEach(s => s.unsubscribe());
+    this.dataService.clearData();
+  }
+
   dataPage = {page: 0};
+  page = 0;
   people$!: Observable<People[]>;
-  p: any;
+  subs: Subscription[] = [];
 
 }

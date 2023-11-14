@@ -22,6 +22,7 @@ body {
   background-color: var(--main-bg);
   color: var(--fn-color);
   padding: 10px 0;
+  position: relative;
 }
 
 .card {

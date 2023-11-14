@@ -22,4 +22,8 @@ export class FilmsComponent {
   ngOnInit() {
   }
 
+  ngOnDestroy() {
+    this.dataService.clearData();
+  }
+
 }
